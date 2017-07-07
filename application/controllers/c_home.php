@@ -25,6 +25,7 @@ class C_home extends CI_Controller
     }
 
     public function view_users(){
+
         $data['query'] = $this->m_home->get_all_users();
 
         $this->load->view('v_home', $data);
