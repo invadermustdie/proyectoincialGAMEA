@@ -4,6 +4,7 @@
 </head>
 <body>
 <h1>Esta es mi vista princiapl de usuarios</h1>
+<p>Programa de listado creado por : <?php echo MICONSTANTE; ?></p>
 <?php
 if ($query->num_rows() > 0):
     ?>

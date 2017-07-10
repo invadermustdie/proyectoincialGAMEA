@@ -38,9 +38,9 @@
 |
 */
 
-//$route['default_controller'] = "c_home";
+$route['default_controller'] = "c_home";
 //$route['default_controller'] = "c_urbanizaciones";
-$route['default_controller'] = "c_users";
+//$route['default_controller'] = "c_users";
 $route['404_override'] = '';
 
 

@@ -35,6 +35,8 @@ define('FOPEN_WRITE_CREATE',					'ab');
 define('FOPEN_READ_WRITE_CREATE',				'a+b');
 define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
+// esta es una variable que estoy  definiendo desde aqui;
+define('MICONSTANTE', 'Alejandro Milton Gutierrez Marin');
 
 
 /* End of file constants.php */

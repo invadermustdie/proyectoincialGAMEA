@@ -3,32 +3,35 @@
 /**
  * Created by PhpStorm.
  * User: Lucio
- * Date: 05/07/2017
- * Time: 11:00 AM
+ * Date: 10/07/2017
+ * Time: 04:09 PM
  */
-class C_home extends CI_Controller
+class C_Home extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
-        $this->load->helper('form');
         $this->load->helper('url');
-        $this->load->helper('security');
+        // asignamos un alias a mi m_home
         $this->load->model('m_home');
-        $this->load->database();
+ //       $this->load->database();
 
     }
 
     public function index(){
-        //$this->load->view('v_home');
-        redirect('c_home/view_users');
+        //creamos una variable en la cual alamecenamos la informacion que vamos a mostrar
+        $data['usuarios'] = $this->m_home->listarUsuarios();
+        // le mandamos a la vista el $data en la vista lo recvibe como "usuarios"
+        $this->load->view('home/v_home', $data);
     }
 
-    public function view_users(){
 
-        $data['query'] = $this->m_home->get_all_users();
+    public function detalleUsuario($id_usua){
 
-        $this->load->view('v_home', $data);
+        $id_usuario = $this->security->xss_clean($id_usua);// previene los ataques xss cross-site
+        $datos['detalle']  = $this->m_home->detalleUsuario($id_usuario);
+
+        $this->load->view('home/v_detalleUsuario', $datos);
     }
 
 }

@@ -3,19 +3,30 @@
 /**
  * Created by PhpStorm.
  * User: Lucio
- * Date: 05/07/2017
- * Time: 11:35 AM
+ * Date: 10/07/2017
+ * Time: 04:29 PM
  */
-class M_home extends CI_Model
+class M_Home extends CI_Model
 {
     function __construct()
     {
         parent::__construct();
     }
 
-    public function get_all_users(){
+    function listarUsuarios(){
 
-        return $this->db->get('users');
+        $consulta = $this->db->get('tbl_usuarios');
+
+        return $consulta->result();
+
+    }
+
+
+    // esta consulat muestra el detalle de un usuario buscando por ID
+    function detalleUsuario($idusua){
+        $this->db->where('id_usua', $idusua);
+        $consulta = $this->db->get('tbl_usuarios');
+        return $consulta->row();
 
     }
 

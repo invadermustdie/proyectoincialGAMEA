@@ -78,7 +78,8 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'english';
+//$config['language']	= 'english';
+$config['language']	= 'spanish';
 
 /*
 |--------------------------------------------------------------------------
@@ -98,9 +99,9 @@ $config['charset'] = 'UTF-8';
 |
 | If you would like to use the 'hooks' feature you must enable it by
 | setting this variable to TRUE (boolean).  See the user guide for details.
-|
+| permite terminos booleanos, modificaciones al core de codeigniter
 */
-$config['enable_hooks'] = FALSE;
+$config['enable_hooks'] = TRUE;
 
 
 /*
@@ -277,7 +278,7 @@ $config['sess_time_to_update']	= 300;
 $config['cookie_prefix']	= "";
 $config['cookie_domain']	= "";
 $config['cookie_path']		= "/";
-$config['cookie_secure']	= FALSE;
+$config['cookie_secure']	= TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -323,8 +324,10 @@ $config['csrf_expire'] = 7200;
 | compression to work, nothing can be sent before the output buffer is called
 | by the output class.  Do not 'echo' any values with compression enabled.
 |
+--> si da problemas con el servidor cambiar a FALSE
+
 */
-$config['compress_output'] = FALSE;
+$config['compress_output'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------

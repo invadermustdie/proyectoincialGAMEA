@@ -1,4 +1,7 @@
-<?php echo form_open('users/v_new_users'); ?>
+<?php
+// esta es la llamda a mi clase controlador C_Users y al metodo new_users
+echo form_open('c_users/new_users'); ?>
+
 <?php if (validation_errors()): ?>
     <h3>Se ha encontrado algun error en el formulario que esta llenado!!!</h3>
     <p><?php
