@@ -22,12 +22,21 @@ class M_Home extends CI_Model
     }
 
 
-    // esta consulat muestra el detalle de un usuario buscando por ID
+    // esta consulta muestra el detalle de un usuario buscando por ID
     function detalleUsuario($idusua){
+
         $this->db->where('id_usua', $idusua);
         $consulta = $this->db->get('tbl_usuarios');
         return $consulta->row();
 
     }
-
 }
+
+
+
+
+
+
+
+
+

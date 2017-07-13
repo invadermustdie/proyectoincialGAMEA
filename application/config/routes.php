@@ -38,10 +38,15 @@
 |
 */
 
-$route['default_controller'] = "c_home";
+//$route['default_controller'] = "c_home";
+$route['default_controller'] = "c_escritorio";
 //$route['default_controller'] = "c_urbanizaciones";
 //$route['default_controller'] = "c_users";
 $route['404_override'] = '';
+
+// crear una nueva regla de routeo
+$route['home/(:num)'] = 'c_home/detalleUsuario/$1';
+
 
 
 /* End of file routes.php */

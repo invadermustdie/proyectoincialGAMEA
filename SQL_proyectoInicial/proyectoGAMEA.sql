@@ -2159,6 +2159,7 @@ VALUES (55,14,'VIRGEN DE COPACABANA MILLUNI BAJO','null', CURRENT_DATE, '0', '1'
 --------------------------------------------------------------------------------------------------------------------------
 
 
+--creacion de la tabla de proyectos
 
 
 
