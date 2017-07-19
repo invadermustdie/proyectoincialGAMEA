@@ -2161,7 +2161,11 @@ VALUES (55,14,'VIRGEN DE COPACABANA MILLUNI BAJO','null', CURRENT_DATE, '0', '1'
 
 --creacion de la tabla de proyectos
 
-
+CREATE TABLE tbl_proyectos (
+id serial,
+nomproy varchar(125) NOT NULL,
+PRIMARY KEY (id)
+) 
 
 
 
