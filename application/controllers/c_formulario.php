@@ -19,15 +19,18 @@ class C_Formulario extends CI_Controller
 
     }
 
-    public function index(){
+    public function index()
+    {
 
         $this->load->view('plantillas/front_end/header');
         $this->load->view('plantillas/front_end/sidebar');
         $this->load->view('formulario/v_formulario');
         $this->load->view('plantillas/front_end/footer');
+
     }
 
-    public function  registrarFormulario(){
+    public function registrarFormulario()
+    {
         //esta funcion es la que registra el formulario de
         // carga de datos desde v_formulario
         $parametros['nomProy'] = $this->input->post('txtNomProy');
@@ -44,4 +47,42 @@ class C_Formulario extends CI_Controller
         $this->load->view('plantillas/front_end/footer');
     }
 
+    // esta funcion sera la que llama los distritos para la vista de mi controlador
+    public function getDistritos()
+    {
+        // parametro con el que esta buscando en el jquery
+        $est = $this->input->post('id');
+        // consulta a la base para ese parametro
+        $resultado = $this->m_formulario->getDistritos($est);
+
+        // decodifica a json
+        echo json_encode($resultado);
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

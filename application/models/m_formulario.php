@@ -23,4 +23,24 @@ class M_Formulario extends CI_Model
         //se a añadido con exito en la bd
     }
 
+    //consulta a la base de datos para utilizarlo en el jquery
+    public function getDistritos($est){
+
+//        $est = array(
+//
+//          'id'=>$est['id']
+//
+//        );
+
+        $est = $this->db->get_where('cat_distritos',array('id_dist'=>$est));
+
+        //$distritos = $this->db->get_where('cat_distritos',$campos);
+//        $this->db->select('*');
+//        $this->db->from('cat_distritos');
+//        $this->db->where("id", $campos);
+//        $distritos = $this->db->get();
+
+        return $est->result();
+
+    }
 }

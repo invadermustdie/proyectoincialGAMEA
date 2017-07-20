@@ -26,12 +26,8 @@
                             <p class="help-block">Aqui va el Nombre del proyecto.</p>
                             <div class="form-group">
                                 <label>Distrito</label>
-                                <select class="form-control">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <select id="cmbDistrito" class="form-control">
+                                    <option value="">1</option>
                                 </select>
                             </div>
                             <p class="help-block">Escoja su distrito.</p>
@@ -446,3 +442,9 @@
 
 </div>
 
+<!-- parametro para mi distrito.js -->
+<script type="text/javascript">
+
+    var baseurl = "<?php echo base_url(); ?>";
+
+</script>
