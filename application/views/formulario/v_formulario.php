@@ -15,42 +15,63 @@
     </div>
 
     <form role="form" action="<?php echo base_url(); ?>c_formulario/registrarFormulario" method="post">
-
         <div class="row">
             <div class="col-lg-6">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="form-group">
                             <label>Nombre del Proyecto</label>
-                            <input type="text" name="txtNomProy" class="form-control">
+                            <input type="text" name="txtNomProy" id="txtNomProy" class="form-control"
+                                   value="<?php echo set_value('txtNomProy'); ?>">
+                            <?php echo form_error('txtNomProy'); ?>
                             <p class="help-block">Aqui va el Nombre del proyecto.</p>
                             <div class="form-group">
                                 <label>Distrito</label>
-                                <select id="cmbDistrito" class="form-control">
-                                    <option value="">1</option>
+                                <select id="cmbDistrito" name="cmbDistrito" class="form-control">
+                                    <option value=" ">Seleccione un valor</option>
+                                    <option value="1" <?php echo set_select('cmbDistrito', '1'); ?>>1</option>
+                                    <option value="2" <?php echo set_select('cmbDistrito', '2'); ?>>2</option>
+                                    <option value="3" <?php echo set_select('cmbDistrito', '3'); ?>>3</option>
+                                    <option value="4" <?php echo set_select('cmbDistrito', '4'); ?>>4</option>
+                                    <option value="5" <?php echo set_select('cmbDistrito', '5'); ?>>5</option>
+                                    <option value="6" <?php echo set_select('cmbDistrito', '6'); ?>>6</option>
+                                    <option value="7" <?php echo set_select('cmbDistrito', '7'); ?>>7</option>
+                                    <option value="8" <?php echo set_select('cmbDistrito', '8'); ?>>8</option>
+                                    <option value="9" <?php echo set_select('cmbDistrito', '9'); ?>>9</option>
+                                    <option value="10" <?php echo set_select('cmbDistrito', '10'); ?>>10</option>
                                 </select>
+                                <?php echo form_error('cmbDistrito'); ?>
                             </div>
                             <p class="help-block">Escoja su distrito.</p>
                             <div class="form-group">
                                 <label>Urbanizacion</label>
-                                <select class="form-control">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <select id="cmbUrbanizacion" name="cmbUrbanizacion" class="form-control">
+                                    <option value=" ">Seleccione un valor</option>
+                                    <option value="1" <?php echo set_select('cmbUrbanizacion', '1'); ?>>1</option>
+                                    <option value="2" <?php echo set_select('cmbUrbanizacion', '2'); ?>>2</option>
+                                    <option value="3" <?php echo set_select('cmbUrbanizacion', '3'); ?>>3</option>
+                                    <option value="4" <?php echo set_select('cmbUrbanizacion', '4'); ?>>4</option>
+                                    <option value="5" <?php echo set_select('cmbUrbanizacion', '5'); ?>>5</option>
+                                    <option value="6" <?php echo set_select('cmbUrbanizacion', '6'); ?>>6</option>
+                                    <option value="7" <?php echo set_select('cmbUrbanizacion', '7'); ?>>7</option>
+                                    <option value="8" <?php echo set_select('cmbUrbanizacion', '8'); ?>>8</option>
                                 </select>
                             </div>
                             <p class="help-block">Escoja su urbanizaci&oacuten.</p>
+                            <?php echo form_error('cmbUrbanizacion'); ?>
 
                             <div class="form-group">
                                 <label>Objetivo General</label>
-                                <textarea class="form-control"></textarea>
+                                <textarea class="form-control" id="txtObjGral"
+                                          name="txtObjGral"><?php echo set_value('txtObjGral'); ?></textarea>
+                                <?php echo form_error('txtObjGral'); ?>
                             </div>
 
                             <div class="form-group">
                                 <label>Situacion Actual</label>
-                                <textarea class="form-control"></textarea>
+                                <textarea class="form-control" id="txtSitAct"
+                                          name="txtSitAct"><?php echo set_value('txtSitAct'); ?></textarea>
+                                <?php echo form_error('txtSitAct'); ?>
                             </div>
                         </div>
                     </div>
@@ -64,79 +85,116 @@
                             <label>Documentación Presentada</label>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" value="">CARTA DE SOLICITUD
+                                    <input type="checkbox" name="checkDoc1" id="carta"
+                                           value="1" <?php echo set_checkbox('checkDoc1', '1') ?>>CARTA DE SOLICITUD
                                 </label>
+                                <?php echo form_error('checkDoc1'); ?>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" value="">FORMULARIO TÉCNICO VECINAL
+                                    <input type="checkbox" name="checkDoc2" id="formulario"
+                                           value="2" <?php echo set_checkbox('checkDoc2', '2') ?>>FORMULARIO TÉCNICO
+                                    VECINAL
                                 </label>
+                                <?php echo form_error('checkDoc2'); ?>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" value="">ACTA DE ASAMBLEA
+                                    <input type="checkbox" name="checkDoc3" id="acta"
+                                           value="3" <?php echo set_checkbox('checkDoc3', '3') ?>>ACTA DE ASAMBLEA
                                 </label>
+                                <?php echo form_error('checkDoc3'); ?>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" value="">PLANIMETRÍA APROBADA
+                                    <input type="checkbox" name="checkDoc4" id="planimetria"
+                                           value="4" <?php echo set_checkbox('checkDoc4', '4') ?>>PLANIMETRÍA APROBADA
                                 </label>
+                                <?php echo form_error('checkDoc4'); ?>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" value="">RESOLUCIÓN TÉCNICA ADMINISTRATIVA
+                                    <input type="checkbox" name="checkDoc5" id="resolucion"
+                                           value="5" <?php echo set_checkbox('checkDoc5', '5') ?>>RESOLUCIÓN TÉCNICA
+                                    ADMINISTRATIVA
                                 </label>
+                                <?php echo form_error('checkDoc5'); ?>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" value="">PLANO DE ZONIFICACIÓN APROBADO
+                                    <input type="checkbox" name="checkDoc6" id="plano"
+                                           value="6" <?php echo set_checkbox('checkDoc6', '6') ?>>PLANO DE ZONIFICACIÓN
+                                    APROBADO
                                 </label>
+                                <?php echo form_error('checkDoc6'); ?>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Clasificación del proyecto</label>
-                            <select class="form-control">
-                                <option>TIPO I/ PROYECTOS DE DESARROLLO RURAL</option>
-                                <option>TIPO II / PROYECTOS DE APOYO AL DESARROLLO PRODUCTIVO</option>
-                                <option>TIPO III / PROYECTOS DE DESARROLLO SOCIAL</option>
-                                <option>TIPO IV / PROYECTOS DE FORTALECIMIENTO INSTITUCIONAL</option>
-                                <option>TIPO V / PROYECTOS DE INVERSIÓN Y DESARROLLO TECNOLÓGICO</option>
+                            <select class="form-control" id="cmbClasificacion" name="cmbClasificacion">
+                                <option value=" ">Seleccione un valor</option>
+                                <option value="1" <?php echo set_select('cmbClasificacion', '1'); ?>>TIPO I/ PROYECTOS
+                                    DE DESARROLLO RURAL
+                                </option>
+                                <option value="2" <?php echo set_select('cmbClasificacion', '2'); ?>>TIPO II / PROYECTOS
+                                    DE APOYO AL DESARROLLO PRODUCTIVO
+                                </option>
+                                <option value="3" <?php echo set_select('cmbClasificacion', '3'); ?>>TIPO III /
+                                    PROYECTOS DE DESARROLLO SOCIAL
+                                </option>
+                                <option value="4" <?php echo set_select('cmbClasificacion', '4'); ?>>TIPO IV / PROYECTOS
+                                    DE FORTALECIMIENTO INSTITUCIONAL
+                                </option>
+                                <option value="5" <?php echo set_select('cmbClasificacion', '5'); ?>>TIPO V / PROYECTOS
+                                    DE INVERSIÓN Y DESARROLLO TECNOLÓGICO
+                                </option>
                             </select>
+                            <?php echo form_error('cmbClasificacion'); ?>
                         </div>
                         <div class="form-group">
                             <label>Tipo de proyecto</label>
-                            <select class="form-control">
-                                <option>APOYO A LA PRODUCCIÓN</option>
-                                <option> DEPORTE</option>
-                                <option> EQUIPAMIENTO URBANO</option>
-                                <option> EDUCACIÓN</option>
-                                <option> VÍAS</option>
-                                <option> SANEAMIENTO BÁSICO</option>
-                                <option> SEGURIDAD CIUDADANA</option>
-                                <option> SALUD</option>
-                                <option> TRANSPORTE</option>
-                                <option> INSTITUCIONAL</option>
-                                <option> CULTURA</option>
-                                <option> GESTIÓN SOCIAL</option>
-                                <option> RIESGOS</option>
-                                <option> OTROS</option>
+                            <select class="form-control" id="cmbTipoProy" name="cmbTipoProy">
+                                <option value=" ">Seleccione una opcion</option>
+                                <option value="1" <?php echo set_select('cmbTipoProy', '1'); ?>>APOYO A LA PRODUCCIÓN
+                                </option>
+                                <option value="2" <?php echo set_select('cmbTipoProy', '2'); ?>> DEPORTE</option>
+                                <option value="3" <?php echo set_select('cmbTipoProy', '3'); ?>> EQUIPAMIENTO URBANO
+                                </option>
+                                <option value="4" <?php echo set_select('cmbTipoProy', '4'); ?>> EDUCACIÓN</option>
+                                <option value="5" <?php echo set_select('cmbTipoProy', '5'); ?>> VÍAS</option>
+                                <option value="6" <?php echo set_select('cmbTipoProy', '6'); ?>> SANEAMIENTO BÁSICO
+                                </option>
+                                <option value="7" <?php echo set_select('cmbTipoProy', '7'); ?>> SEGURIDAD CIUDADANA
+                                </option>
+                                <option value="8" <?php echo set_select('cmbTipoProy', '8'); ?>> SALUD</option>
+                                <option value="9" <?php echo set_select('cmbTipoProy', '9'); ?>> TRANSPORTE</option>
+                                <option value="10" <?php echo set_select('cmbTipoProy', '10'); ?>> INSTITUCIONAL
+                                </option>
+                                <option value="11" <?php echo set_select('cmbTipoProy', '11'); ?>> CULTURA</option>
+                                <option value="12" <?php echo set_select('cmbTipoProy', '12'); ?>> GESTIÓN SOCIAL
+                                </option>
+                                <option value="13" <?php echo set_select('cmbTipoProy', '13'); ?>> RIESGOS</option>
+                                <option value="14" <?php echo set_select('cmbTipoProy', '14'); ?>> OTROS</option>
                             </select>
+                            <?php echo form_error('cmbTipoProy'); ?>
                         </div>
                         <div class="form-group">
                             <label>Opciones de proyecto</label>
-                            <select class="form-control">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>OTROS</option>
+                            <select class="form-control" id="cmbOpcProy" name="cmbOpcProy">
+                                <option value=" ">Seleccione una opcion</option>
+                                <option value="1" <?php echo set_select('cmbOpcProy', '1'); ?>>1</option>
+                                <option value="2" <?php echo set_select('cmbOpcProy', '2'); ?>>2</option>
+                                <option value="3" <?php echo set_select('cmbOpcProy', '3'); ?>>3</option>
+                                <option value="4" <?php echo set_select('cmbOpcProy', '4'); ?>>4</option>
+                                <option value="5" <?php echo set_select('cmbOpcProy', '5'); ?>>5</option>
+                                <option value="6" <?php echo set_select('cmbOpcProy', '6'); ?>>6</option>
+                                <option value="7" <?php echo set_select('cmbOpcProy', '7'); ?>>OTROS</option>
                             </select>
+                            <?php echo form_error('cmbOpcProy'); ?>
                         </div>
                         <div class="form-group">
                             <label>Observaciones</label>
-                            <textarea class="form-control"></textarea>
+                            <textarea class="form-control" id="txtObsDocu" name="txtObsDoc"></textarea>
                         </div>
                     </div>
                 </div>
@@ -161,16 +219,21 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <label>Beneficiarios</label>
-                            <select class="form-control">
-                                <option>Habitantes</option>
-                                <option>Estudiantes</option>
-                                <option>Juntas Vecinales</option>
-                                <option>Junta Escolar</option>
-                                <option>Otros</option>
+                            <select class="form-control" id="cmbBen" name="cmbBen">
+                                <option value=" ">Seleccione una opcion</option>
+                                <option value="1" <?php echo set_select('cmbBen', '1'); ?>>Habitantes</option>
+                                <option value="2" <?php echo set_select('cmbBen', '2'); ?>>Estudiantes</option>
+                                <option value="3" <?php echo set_select('cmbBen', '3'); ?>>Juntas Vecinales</option>
+                                <option value="4" <?php echo set_select('cmbBen', '4'); ?>>Junta Escolar</option>
+                                <option value="5" <?php echo set_select('cmbBen', '5'); ?>>Otros</option>
                             </select>
-                            <label>Cantidad</label>
-                            <input class="form-control">
+                            <?php echo form_error('cmbBen'); ?>
                         </div>
+                        <label>Cantidad</label>
+                        <input class="form-control" name="txtCantBen" id="txtCantBen"
+                               value="<?php echo set_value('txtCantBen'); ?>">
+                        <?php echo form_error('txtCantBen'); ?>
+
                         <div class="form-group">
                             <label>Observaciones</label>
                             <textarea class="form-control"></textarea>
@@ -183,15 +246,22 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <label>Magnitud del proyecto</label>
-                            <select class="form-control">
-                                <option>Metros (M)</option>
-                                <option>Metros lineales (ML)</option>
-                                <option>Metros cuadrados (M2)</option>
-                                <option>Otros</option>
+                            <select class="form-control" id="cmbMagnitud" name="cmbMagnitud">
+                                <option value=" ">Seleccione una opcion</option>
+                                <option value="1" <?php echo set_select('cmbMagnitud', '1'); ?>>Metros (M)</option>
+                                <option value="2" <?php echo set_select('cmbMagnitud', '2'); ?>>Metros lineales (ML)
+                                </option>
+                                <option value="3" <?php echo set_select('cmbMagnitud', '3'); ?>>Metros cuadrados (M2)
+                                </option>
+                                <option value="4" <?php echo set_select('cmbMagnitud', '4'); ?>>Otros</option>
                             </select>
-                            <label>Cantidad</label>
-                            <input class="form-control">
+                            <?php echo form_error('cmbMagnitud'); ?>
                         </div>
+                        <label>Cantidad</label>
+                        <input class="form-control" name="txtCantMag" id="txtCantMag"
+                               value="<?php echo set_value('txtCantMag'); ?>">
+                        <?php echo form_error('txtCantMag'); ?>
+
                         <div class="form-group">
                             <label>Observaciones</label>
                             <textarea class="form-control"></textarea>
@@ -221,19 +291,27 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <label>EJECUTOR</label>
-                            <input class="form-control">
+                            <input class="form-control" name="txtEjecutorPreInv" id="txtEjecutorPreInv"
+                                   value="<?php echo set_value('txtEjecutorPreInv'); ?>">
+                            <?php echo form_error('txtEjecutorPreInv'); ?>
                         </div>
                         <div class="form-group">
                             <label>SUPERVISOR</label>
-                            <input class="form-control">
+                            <input class="form-control" name="txtSupervisorPreInv" id="txtSupervisorPreInv"
+                                   value="<?php echo set_value('txtSupervisorPreInv'); ?>">
+                            <?php echo form_error('txtSupervisorPreInv'); ?>
                         </div>
                         <div class="form-group">
                             <label>FISCAL</label>
-                            <input class="form-control">
+                            <input class="form-control" name="txtFiscalPreInv" id="txtFiscalPreInv"
+                                   value="<?php echo set_value('txtFiscalPreInv'); ?>">
+                            <?php echo form_error('txtFIscalPreInv'); ?>
                         </div>
                         <div class="form-group">
                             <label>PLAZO ESTIMADO</label>
-                            <input class="form-control">
+                            <input class="form-control" name="txtPlazoPreInv" id="txtPlazoPreInv"
+                                   value="<?php echo set_value('txtPlazoPreInv'); ?>">
+                            <?php echo form_error('txtPlazoPreInv'); ?>
                             <p class="help-block">El plazo estimado debe de estar en <strong>dias
                                     calendario</strong></p>
                         </div>
@@ -248,19 +326,27 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <label>EJECUTOR</label>
-                            <input class="form-control">
+                            <input class="form-control" name="txtEjecutorInv" id="txtEjecutorInv"
+                                   value="<?php echo set_value('txtEjecutorInv'); ?>">
+                            <?php echo form_error('txtEjecutorInv'); ?>
                         </div>
                         <div class="form-group">
                             <label>SUPERVISOR</label>
-                            <input class="form-control">
+                            <input class="form-control" name="txtSupervisorInv" id="txtSupervisorInv"
+                                   value="<?php echo set_value('txtSupervisorInv'); ?>">
+                            <?php echo form_error('txtSupervisorInv'); ?>
                         </div>
                         <div class="form-group">
                             <label>FISCAL</label>
-                            <input class="form-control">
+                            <input class="form-control" name="txtFiscalInv" id="txtFiscalInv"
+                                   value="<?php echo set_value('txtFiscalInv'); ?>">
+                            <?php echo form_error('txtFiscalInv'); ?>
                         </div>
                         <div class="form-group">
                             <label>PLAZO ESTIMADO</label>
-                            <input class="form-control">
+                            <input class="form-control" name="txtPlazoInv" id="txtPlazoInv"
+                                   value="<?php echo set_value('txtPlazoInv'); ?>">
+                            <?php echo form_error('txtPlazoInv'); ?>
                             <p class="help-block">El plazo estimado debe de estar en <strong>dias
                                     calendario</strong></p>
                         </div>
@@ -394,7 +480,9 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <label>Conclusiones</label>
-                            <textarea class="form-control"></textarea>
+                            <textarea class="form-control" id="txtConclusiones"
+                                      name="txtConclusiones"><?php echo set_value('txtConclusiones') ?></textarea>
+                            <?php echo form_error('txtConclusiones'); ?>
                         </div>
                     </div>
                 </div>
@@ -404,7 +492,9 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <label>Recomendaciones</label>
-                            <textarea class="form-control"></textarea>
+                            <textarea class="form-control" id="txtRecomendaciones"
+                                      name="txtRecomendaciones"><?php echo set_value('txtRecomendaciones') ?></textarea>
+                            <?php echo form_error('txtRecomendaciones'); ?>
                         </div>
                     </div>
                 </div>

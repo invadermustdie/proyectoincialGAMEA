@@ -14,6 +14,9 @@ class C_Formulario extends CI_Controller
 
         $this->load->helper('url');
 
+        // carga de la libreria para validar formularios
+        $this->load->library('form_validation');
+
         // carga de el modelo para registro de formularios
         $this->load->model('m_formulario');
 
@@ -29,23 +32,81 @@ class C_Formulario extends CI_Controller
 
     }
 
-    public function registrarFormulario()
-    {
-        //esta funcion es la que registra el formulario de
-        // carga de datos desde v_formulario
-        $parametros['nomProy'] = $this->input->post('txtNomProy');
-        // aqui ise carga los otros parametros de la base
+//    public function registrarFormulario()
+//    {
+//        //esta funcion es la que registra el formulario de
+//        // carga de datos desde v_formulario
+//        $parametros['nomProy'] = $this->input->post('txtNomProy');
+//        // aqui ise carga los otros parametros de la base
+//
+//        //llamada al modelo de registro de formulario
+//        $this->m_formulario->guardarFormulario($parametros);
+//        // aqui tendria aue hacer la verificacion si es que se registro con exito en la bd
+//
+//        // carga las vistas necesarias para mi formulario
+//        $this->load->view('plantillas/front_end/header');
+//        $this->load->view('plantillas/front_end/sidebar');
+//        $this->load->view('formulario/v_formulario');
+//        $this->load->view('plantillas/front_end/footer');
+//    }
 
-        //llamada al modelo de registro de formulario
-        $this->m_formulario->guardarFormulario($parametros);
-        // aqui tendria aue hacer la verificacion si es que se registro con exito en la bd
+    // esta es la funcion que utilizo para elregistro de formulario
+    public function registrarFormulario(){
 
-        // carga las vistas necesarias para mi formulario
-        $this->load->view('plantillas/front_end/header');
-        $this->load->view('plantillas/front_end/sidebar');
-        $this->load->view('formulario/v_formulario');
-        $this->load->view('plantillas/front_end/footer');
+        // reglas de validacion de formulario // nombredelcampodesdelavista, etiqueta, regla
+        $this->form_validation->set_rules('txtNomProy', 'Nombre del proyecto', 'trim|required|strip_tags|xss_clean');
+        $this->form_validation->set_rules('cmbDistrito', 'distrito', 'required');
+        $this->form_validation->set_rules('cmbUrbanizacion', 'urbanizacion', 'required');
+        $this->form_validation->set_rules('txtObjGral', 'Objetivo General', 'trim|required');
+        $this->form_validation->set_rules('txtSitAct', 'Situacion Actual', 'trim|required');
+
+        $this->form_validation->set_rules('checkDoc1', 'Carta', 'required');
+        $this->form_validation->set_rules('checkDoc2', 'formulario tecnico', 'required');
+        $this->form_validation->set_rules('checkDoc3', 'acta', 'required');
+        $this->form_validation->set_rules('checkDoc4', 'planimetria', 'required');
+        $this->form_validation->set_rules('checkDoc5', 'resolucion tecnica administrativa', 'required');
+        $this->form_validation->set_rules('checkDoc6', 'plano zonificacion', 'required');
+
+        $this->form_validation->set_rules('cmbClasificacion', 'clasificacion del proyecto', 'required');
+        $this->form_validation->set_rules('cmbTipoProy', 'tipo de proyecto', 'required');
+        $this->form_validation->set_rules('cmbOpcProy', 'Opciones de proyecto', 'required');
+        $this->form_validation->set_rules('cmbBen', 'Beneficiarios', 'required');
+        $this->form_validation->set_rules('txtCantBen', 'cantidad de beneficiarios', 'trim|required|is_natural_no_zero');
+        $this->form_validation->set_rules('cmbMagnitud', 'magnitud del proyecto', 'required');
+        $this->form_validation->set_rules('txtCantMag', 'cantidad de magnitud del proyecto', 'trim|required|numeric');
+        $this->form_validation->set_rules('txtEjecutorPreInv', 'ejecutor de pre inversion', 'trim|required');
+        $this->form_validation->set_rules('txtSupervisorPreInv', 'supervisor de pre inversion', 'trim|required');
+        $this->form_validation->set_rules('txtFiscalPreInv', 'fiscal de pre inversion', 'trim|required');
+        $this->form_validation->set_rules('txtPlazoPreInv', 'plazo estimado de pre inversion', 'trim|required|is_natural_no_zero');
+        $this->form_validation->set_rules('txtEjecutorInv', 'ejecutor de inversion', 'trim|required');
+        $this->form_validation->set_rules('txtSupervisorInv', 'supervisor de inversion', 'trim|required');
+        $this->form_validation->set_rules('txtFiscalInv', 'fiscal de inversion', 'trim|required');
+        $this->form_validation->set_rules('txtPlazoInv', 'plazo de inversion', 'trim|required|is_natural_no_zero');
+        $this->form_validation->set_rules('txtConclusiones', 'conclusiones del proyecto', 'trim|required');
+        $this->form_validation->set_rules('txtRecomendaciones', 'recomendaciones del proyecto', 'trim|required');
+
+        //delimitacion de mensajes de errores en la vista
+        $this->form_validation->set_error_delimiters('<span class="mensaje-error"><strong>','</strong></span>');
+
+
+        // aqui es donde se esta corriendo la validacion
+        if($this->form_validation->run() === false){
+            //vuelve a cargar el formulario y se muestran los errores
+            $this->load->view('plantillas/front_end/header');
+            $this->load->view('plantillas/front_end/sidebar');
+            $this->load->view('formulario/v_formulario');
+            $this->load->view('plantillas/front_end/footer');
+
+        }else{
+            // se valido deforma correcta
+            $this->load->view('plantillas/front_end/header');
+            $this->load->view('plantillas/front_end/sidebar');
+            $this->load->view('formulario/v_formulario_correcto');
+            $this->load->view('plantillas/front_end/footer');
+
+        }
     }
+
 
     // esta funcion sera la que llama los distritos para la vista de mi controlador
     public function getDistritos()

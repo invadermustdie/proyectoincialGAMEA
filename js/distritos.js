@@ -1,19 +1,19 @@
-alert(baseurl+"c_formulario/getDistritos");
-
-$.post(
-    baseurl+"c_formulario/getDistritos",
-    // de ida manda
-    {
-        "id": 1
-    },
-    // callback, recibe de el controlador
-    function (data) {
-         alert("Aqui llega");
-
-         // aqui se recibe los datos para el combobox ci
-        //alert(data);
-    }
-);
+// alert(baseurl+"c_formulario/getDistritos");
+//
+// $.post(
+//     baseurl+"c_formulario/getDistritos",
+//     // de ida manda
+//     {
+//         "id": 1
+//     },
+//     // callback, recibe de el controlador
+//     function (data) {
+//          alert("Aqui llega");
+//
+//          // aqui se recibe los datos para el combobox ci
+//         //alert(data);
+//     }
+// );
 console.log("prueba");
 
 //alert(myOrderString);
