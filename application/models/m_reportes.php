@@ -17,7 +17,9 @@ class M_Reportes extends CI_Model
     {
         // aqui se hace la consulata para lsitar todos los proyectos
         //aqui le solicitamos un query a la bd
-        $miConsulta = "select nombreproyecto, distrito, urbanizacion, objcentral, categorizacion, tipoproy, sector, alcance, monto from t_proyecto order by fecha, distrito;";
+        //$miConsulta = "select nombreproyecto, distrito, urbanizacion, objcentral, categorizacion, tipoproy, sector, alcance, monto from t_proyecto order by fecha, distrito;";
+        $miConsulta = "select * from t_proyecto order by distrito, fecha;";
+
         $query = $this->db->query($miConsulta);
         return $query->result();
     }

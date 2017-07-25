@@ -103,10 +103,8 @@ class C_Formulario extends CI_Controller
             $this->load->view('plantillas/front_end/sidebar');
             $this->load->view('formulario/v_formulario_correcto');
             $this->load->view('plantillas/front_end/footer');
-
         }
     }
-
 
     // esta funcion sera la que llama los distritos para la vista de mi controlador
     public function getDistritos()
