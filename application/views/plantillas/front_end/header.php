@@ -12,11 +12,13 @@
     <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>assets/css/main-style.css" rel="stylesheet" />
 
+    <!-- Morris Charts CSS -->
+    <link href="<?php echo base_url(); ?>assets/morrisjs/morris.css" rel="stylesheet">
     <!-- DataTables CSS -->
-    <link href="<?=base_url();?>assets/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- DataTables Responsive CSS -->
-    <link href="<?=base_url();?>assets/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
 
 
 </head>
