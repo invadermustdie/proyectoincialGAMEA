@@ -15,6 +15,16 @@
 <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
+
+            "language": {
+                "search":"Buscar",
+                "lengthMenu": "Mostrar _MENU_ registros por pagina",
+                "zeroRecords": "Lo Siento no se encontraron registros",
+                "info": "Pagina _PAGE_ de _PAGES_",
+                "infoEmpty": "No existe datos disponibles",
+                "infoFiltered": "(filtrado de _MAX_ datos totales)"
+            },
+
             responsive: true
         });
     });
