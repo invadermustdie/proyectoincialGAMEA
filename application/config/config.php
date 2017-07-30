@@ -22,8 +22,8 @@
 | a PHP script and you can easily do that on your own.
 |
 */
-//$config['base_url'] = 'http://localhost/proyectoinicial/';
-$config['base_url'] = 'http://172.16.15.62/proyectoinicial/';
+$config['base_url'] = 'http://localhost/proyectoinicial/';
+//$config['base_url'] = 'http://172.16.15.62/proyectoinicial/';
 
 /*
 |--------------------------------------------------------------------------
