@@ -24,23 +24,83 @@ class M_Formulario extends CI_Model
     }
 
     //consulta a la base de datos para utilizarlo en el jquery
-    public function getDistritos($est){
-
-//        $est = array(
+//    public function getDistritos($est){
 //
-//          'id'=>$est['id']
+////        $est = array(
+////
+////          'id'=>$est['id']
+////
+////        );
 //
-//        );
+//        $est = $this->db->get_where('cat_distritos',array('id_dist'=>$est));
+//
+//        //$distritos = $this->db->get_where('cat_distritos',$campos);
+////        $this->db->select('*');
+////        $this->db->from('cat_distritos');
+////        $this->db->where("id", $campos);
+////        $distritos = $this->db->get();
+//
+//        return $est->result();
+//    }
 
-        $est = $this->db->get_where('cat_distritos',array('id_dist'=>$est));
 
-        //$distritos = $this->db->get_where('cat_distritos',$campos);
-//        $this->db->select('*');
-//        $this->db->from('cat_distritos');
-//        $this->db->where("id", $campos);
-//        $distritos = $this->db->get();
+    public function getDistritos(){
 
-        return $est->result();
+        $distritos = $this->db->get('cat_distritos');
+
+        return $distritos->result();
 
     }
+
+
+    public function getUrbanizaciones($idDist){
+
+        $this->db->where('id_dist', $idDist);
+        $urb =  $this->db->get('cat_urbanizaciones');
+
+        return $urb->result();
+
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

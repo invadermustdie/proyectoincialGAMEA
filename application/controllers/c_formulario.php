@@ -24,10 +24,11 @@ class C_Formulario extends CI_Controller
 
     public function index()
     {
+        $data['distritos'] = $this->m_formulario->getDistritos();
 
         $this->load->view('plantillas/front_end/header');
         $this->load->view('plantillas/front_end/sidebar');
-        $this->load->view('formulario/v_formulario');
+        $this->load->view('formulario/v_formulario', $data);
         $this->load->view('plantillas/front_end/footer');
 
     }
@@ -51,7 +52,8 @@ class C_Formulario extends CI_Controller
 //    }
 
     // esta es la funcion que utilizo para elregistro de formulario
-    public function registrarFormulario(){
+    public function registrarFormulario()
+    {
 
         // reglas de validacion de formulario // nombredelcampodesdelavista, etiqueta, regla
         $this->form_validation->set_rules('txtNomProy', 'Nombre del proyecto', 'trim|required|strip_tags|xss_clean');
@@ -86,18 +88,18 @@ class C_Formulario extends CI_Controller
         $this->form_validation->set_rules('txtRecomendaciones', 'recomendaciones del proyecto', 'trim|required');
 
         //delimitacion de mensajes de errores en la vista
-        $this->form_validation->set_error_delimiters('<span class="mensaje-error"><strong>','</strong></span>');
+        $this->form_validation->set_error_delimiters('<span class="mensaje-error"><strong>', '</strong></span>');
 
 
         // aqui es donde se esta corriendo la validacion
-        if($this->form_validation->run() === false){
+        if ($this->form_validation->run() === false) {
             //vuelve a cargar el formulario y se muestran los errores
             $this->load->view('plantillas/front_end/header');
             $this->load->view('plantillas/front_end/sidebar');
             $this->load->view('formulario/v_formulario');
             $this->load->view('plantillas/front_end/footer');
 
-        }else{
+        } else {
             // se valido deforma correcta
             $this->load->view('plantillas/front_end/header');
             $this->load->view('plantillas/front_end/sidebar');
@@ -118,6 +120,25 @@ class C_Formulario extends CI_Controller
         echo json_encode($resultado);
     }
 
+
+    public function fillUrbanizacion()
+    {
+        $idDist = $this->input->post('idDistrito');
+
+        if ($idDist) {
+
+            $urb = $this->m_formulario->getUrbanizaciones($idDist);
+
+            foreach ($urb as $u) {
+
+                echo '<option value="' .$u->id. '">' .$u->nombre_urb. '</option>';
+            }
+
+        } else {
+
+            echo '<option value=" ">seleccione una opcion</option>';
+        }
+    }
 }
 
 

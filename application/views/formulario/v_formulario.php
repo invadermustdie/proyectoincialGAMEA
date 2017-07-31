@@ -9,7 +9,7 @@
 
                 idDistrito = $('#cmbDistrito').val();
 
-                alert(idDistrito + " <?php echo base_url();?>c_formulario/fillUrbanizacion");
+                //alert(idDistrito);
 
                 $.post("<?php echo base_url();?>c_formulario/fillUrbanizacion",{
                     idDistrito : idDistrito
@@ -66,7 +66,6 @@
                                 <label>Urbanizacion</label>
 
                                 <select class="form-control" id="cmbUrbanizacion" name="cmbUrbanizacion">
-
                                 </select>
                             </div>
 
