@@ -1,3 +1,26 @@
+<!--<!--suppress ALL -->-->
+<script src="<?php echo base_url(); ?>assets/plugins/jquery.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#cmbDistrito").change(function () {
+
+            $("#cmbDistrito option:selected").each(function () {
+
+                idDistrito = $('#cmbDistrito').val();
+
+                alert(idDistrito + " <?php echo base_url();?>c_formulario/fillUrbanizacion");
+
+                $.post("<?php echo base_url();?>c_formulario/fillUrbanizacion",{
+                    idDistrito : idDistrito
+                },function (data) {
+                    $("#cmbUrbanizacion").html(data);
+                });
+            });
+        });
+    });
+</script>
+
 <!--  page-wrapper -->
 <div id="page-wrapper" xmlns="http://www.w3.org/1999/html">
     <div class="row">
@@ -25,40 +48,27 @@
                                    value="<?php echo set_value('txtNomProy'); ?>">
                             <?php echo form_error('txtNomProy'); ?>
                             <p class="help-block">Aqui va el Nombre del proyecto.</p>
+
                             <div class="form-group">
                                 <label>Distrito</label>
-                                <select id="cmbDistrito" name="cmbDistrito" class="form-control">
-                                    <option value=" ">Seleccione un valor</option>
-                                    <option value="1" <?php echo set_select('cmbDistrito', '1'); ?>>1</option>
-                                    <option value="2" <?php echo set_select('cmbDistrito', '2'); ?>>2</option>
-                                    <option value="3" <?php echo set_select('cmbDistrito', '3'); ?>>3</option>
-                                    <option value="4" <?php echo set_select('cmbDistrito', '4'); ?>>4</option>
-                                    <option value="5" <?php echo set_select('cmbDistrito', '5'); ?>>5</option>
-                                    <option value="6" <?php echo set_select('cmbDistrito', '6'); ?>>6</option>
-                                    <option value="7" <?php echo set_select('cmbDistrito', '7'); ?>>7</option>
-                                    <option value="8" <?php echo set_select('cmbDistrito', '8'); ?>>8</option>
-                                    <option value="9" <?php echo set_select('cmbDistrito', '9'); ?>>9</option>
-                                    <option value="10" <?php echo set_select('cmbDistrito', '10'); ?>>10</option>
+
+                                <select class="form-control" id="cmbDistrito" name="cmbDistrito">
+                                    <option value="">Seleccione una opcion</option>
+                                    <?php
+                                    foreach ($distritos as $dist) {
+                                        echo '<option value="' . $dist->id_dist . '">' . $dist->nombre_dist . '</option>';
+                                    };
+                                    ?>
                                 </select>
-                                <?php echo form_error('cmbDistrito'); ?>
                             </div>
-                            <p class="help-block">Escoja su distrito.</p>
+
                             <div class="form-group">
                                 <label>Urbanizacion</label>
-                                <select id="cmbUrbanizacion" name="cmbUrbanizacion" class="form-control">
-                                    <option value=" ">Seleccione un valor</option>
-                                    <option value="1" <?php echo set_select('cmbUrbanizacion', '1'); ?>>1</option>
-                                    <option value="2" <?php echo set_select('cmbUrbanizacion', '2'); ?>>2</option>
-                                    <option value="3" <?php echo set_select('cmbUrbanizacion', '3'); ?>>3</option>
-                                    <option value="4" <?php echo set_select('cmbUrbanizacion', '4'); ?>>4</option>
-                                    <option value="5" <?php echo set_select('cmbUrbanizacion', '5'); ?>>5</option>
-                                    <option value="6" <?php echo set_select('cmbUrbanizacion', '6'); ?>>6</option>
-                                    <option value="7" <?php echo set_select('cmbUrbanizacion', '7'); ?>>7</option>
-                                    <option value="8" <?php echo set_select('cmbUrbanizacion', '8'); ?>>8</option>
+
+                                <select class="form-control" id="cmbUrbanizacion" name="cmbUrbanizacion">
+
                                 </select>
                             </div>
-                            <p class="help-block">Escoja su urbanizaci&oacuten.</p>
-                            <?php echo form_error('cmbUrbanizacion'); ?>
 
                             <div class="form-group">
                                 <label>Objetivo General</label>
@@ -531,6 +541,7 @@
     </form>
 
 </div>
+
 
 <!-- parametro para mi distrito.js -->
 <script type="text/javascript">
