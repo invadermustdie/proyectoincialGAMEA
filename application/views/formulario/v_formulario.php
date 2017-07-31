@@ -3,19 +3,27 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+
         $("#cmbDistrito").change(function () {
 
             $("#cmbDistrito option:selected").each(function () {
 
-                idDistrito = $('#cmbDistrito').val();
+                idDist = $('#cmbDistrito').val();
 
-                //alert(idDistrito);
+                alert("Desde la vista : "+idDist);
 
-                $.post("<?php echo base_url();?>c_formulario/fillUrbanizacion",{
-                    idDistrito : idDistrito
-                },function (data) {
+                $.post("<?php echo base_url();?>c_formulario/fillUrbanizacion", {
+
+                    idDistrito : idDist
+
+                }, function (data) {
+
                     $("#cmbUrbanizacion").html(data);
+
+                    alert(data);
+
                 });
+
             });
         });
     });
@@ -53,19 +61,21 @@
                                 <label>Distrito</label>
 
                                 <select class="form-control" id="cmbDistrito" name="cmbDistrito">
-                                    <option value="">Seleccione una opcion</option>
+                                    <option value=" ">Seleccione una opcion</option>
                                     <?php
                                     foreach ($distritos as $dist) {
-                                        echo '<option value="' . $dist->id_dist . '">' . $dist->nombre_dist . '</option>';
+                                        echo '<option value="' . $dist->id_dist . '" '.set_select('cmbDistrito', $dist->id_dist ).' >' . $dist->nombre_dist . '</option>';
                                     };
                                     ?>
                                 </select>
+                                <?php echo form_error('cmbDistrito'); ?>
                             </div>
 
                             <div class="form-group">
                                 <label>Urbanizacion</label>
 
                                 <select class="form-control" id="cmbUrbanizacion" name="cmbUrbanizacion">
+                                    <option value=" ">Seleccione una opcion</option>
                                 </select>
                             </div>
 
@@ -540,6 +550,7 @@
     </form>
 
 </div>
+
 
 
 <!-- parametro para mi distrito.js -->

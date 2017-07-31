@@ -94,49 +94,45 @@ class C_Formulario extends CI_Controller
         // aqui es donde se esta corriendo la validacion
         if ($this->form_validation->run() === false) {
             //vuelve a cargar el formulario y se muestran los errores
+            $data['distritos'] = $this->m_formulario->getDistritos();
+
             $this->load->view('plantillas/front_end/header');
             $this->load->view('plantillas/front_end/sidebar');
-            $this->load->view('formulario/v_formulario');
+            $this->load->view('formulario/v_formulario', $data);
             $this->load->view('plantillas/front_end/footer');
 
         } else {
             // se valido deforma correcta
+            $data['distritos'] = $this->m_formulario->getDistritos();
+
             $this->load->view('plantillas/front_end/header');
             $this->load->view('plantillas/front_end/sidebar');
-            $this->load->view('formulario/v_formulario_correcto');
+            $this->load->view('formulario/v_formulario', $data);
             $this->load->view('plantillas/front_end/footer');
         }
     }
-
-    // esta funcion sera la que llama los distritos para la vista de mi controlador
-    public function getDistritos()
-    {
-        // parametro con el que esta buscando en el jquery
-        $est = $this->input->post('id');
-        // consulta a la base para ese parametro
-        $resultado = $this->m_formulario->getDistritos($est);
-
-        // decodifica a json
-        echo json_encode($resultado);
-    }
-
 
     public function fillUrbanizacion()
     {
         $idDist = $this->input->post('idDistrito');
 
+        echo '<script> alert("Id distrito desde el controlador "+'.$idDist.')</script>';
+
         if ($idDist) {
 
             $urb = $this->m_formulario->getUrbanizaciones($idDist);
 
+            echo '<option value=" ">Seleccione una opcion</optionn>';
+
             foreach ($urb as $u) {
 
-                echo '<option value="' .$u->id. '">' .$u->nombre_urb. '</option>';
+                echo '<option value="' . $u->id . '">' . $u->nombre_urb . '</option>';
             }
 
         } else {
 
-            echo '<option value=" ">seleccione una opcion</option>';
+            echo '<option value=" ">Seleccione una opcion</optionn>';
+
         }
     }
 }

@@ -13,10 +13,11 @@ class M_Formulario extends CI_Model
         parent::__construct();
     }
 
-    public function guardarFormulario($param){
+    public function guardarFormulario($param)
+    {
         // recupera los datos desde el controlador c_formulario
         $campos = array(
-          'nomproy' => $param['nomProy']
+            'nomproy' => $param['nomProy']
         );
 
         $this->db->insert('tbl_proyectos', $campos);
@@ -44,22 +45,35 @@ class M_Formulario extends CI_Model
 //    }
 
 
-    public function getDistritos(){
+    public function getDistritos()
+    {
 
         $distritos = $this->db->get('cat_distritos');
 
-        return $distritos->result();
+        if ($distritos->num_rows() > 0) {
 
+            return $distritos->result();
+
+        }
     }
 
 
-    public function getUrbanizaciones($idDist){
+    public function getUrbanizaciones($idDist)
+    {
 
+//        $miConsulta = 'select id, nombre_urb from cat_urbanizaciones where id_dist ='.$idDist.' order by nombre_urb;';
+//
+//        $query = $this->db->query($miConsulta);
+//
+//        return $query->result();
         $this->db->where('id_dist', $idDist);
-        $urb =  $this->db->get('cat_urbanizaciones');
+        $this->db->order_by('nombre_urb', 'asc');
+        $urb = $this->db->get('cat_urbanizaciones');
 
-        return $urb->result();
+        if($urb->num_rows() >0){
 
+            return $urb->result();
+        }
     }
 
 }
